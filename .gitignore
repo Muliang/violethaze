@@ -1,0 +1,9 @@
+*.jar
+!/lib/*
+.settings/
+.project
+.classpath
+.DS_Store
+
+/build
+/WebContent
