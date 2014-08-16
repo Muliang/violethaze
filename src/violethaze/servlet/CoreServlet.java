@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import violethaze.util.Util;
+import violethaze.util.SignatureUtil;
 
 /**
  * Servlet implementation class CoreSerlet
@@ -42,7 +42,7 @@ public class CoreServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		if (Util.checkSignature(signature, timestamp, nonce)) {
+		if (SignatureUtil.checkSignature(signature, timestamp, nonce)) {
 			out.print(echostr);
 		}
 

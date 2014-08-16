@@ -2,7 +2,7 @@ package violethaze.message.response;
 
 import java.util.List;
 
-public class ArticleResponseMessage {
+public class NewsResponseMessage {
 	private int ArticleCount;
 	private List<Article> Articles;
 
