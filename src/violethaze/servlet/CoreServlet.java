@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import violethaze.service.CoreService;
 import violethaze.util.SignatureUtil;
 
 /**
@@ -56,7 +57,14 @@ public class CoreServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+
+		String responseMsg = CoreService.processRequest(request);
+		PrintWriter out = response.getWriter();
+		out.print(responseMsg);
+		out.close();
 	}
 
 }

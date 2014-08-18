@@ -36,22 +36,22 @@ public class MessageUtil {
 	// constant value: message types
 
 	// response messages
-	private static final String RESPONSE_MSG_TYPE_TEXT = "text";
-	private static final String RESPONSE_MSG_TYPE_MUSIC = "music";
-	private static final String RESPONSE_MSG_TYPE_NEWS = "news";
+	public static final String RESPONSE_MSG_TYPE_TEXT = "text";
+	public static final String RESPONSE_MSG_TYPE_MUSIC = "music";
+	public static final String RESPONSE_MSG_TYPE_NEWS = "news";
 
 	// request messages
-	private static final String REQUEST_MSG_TYPE_TEXT = "text";
-	private static final String REQUEST_MSG_TYPE_IMAGE = "image";
-	private static final String REQUEST_MSG_TYPE_LINK = "link";
-	private static final String REQUEST_MSG_TYPE_LOCATION = "location";
-	private static final String REQUEST_MSG_TYPE_VOICE = "voice";
+	public static final String REQUEST_MSG_TYPE_TEXT = "text";
+	public static final String REQUEST_MSG_TYPE_IMAGE = "image";
+	public static final String REQUEST_MSG_TYPE_LINK = "link";
+	public static final String REQUEST_MSG_TYPE_LOCATION = "location";
+	public static final String REQUEST_MSG_TYPE_VOICE = "voice";
 
-	private static final String REQUEST_MSG_TYPE_EVENT = "event"; // event
+	public static final String REQUEST_MSG_TYPE_EVENT = "event"; // event
 
 	// event type
-	private static final String EVENT_TYPE_SUBSCRIBE = "subscribe";
-	private static final String EVENT_TYPE_UNSUBSCRIBE = "unsubscribe";
+	public static final String EVENT_TYPE_SUBSCRIBE = "subscribe";
+	public static final String EVENT_TYPE_UNSUBSCRIBE = "unsubscribe";
 
 	/**
 	 * 
@@ -70,10 +70,10 @@ public class MessageUtil {
 		 * use a map to store the parsed result. key is the item in XML message
 		 */
 		Map<String, String> result = new HashMap<String, String>();
-
+		
 		// input stream
 		InputStream inputStream = request.getInputStream();
-
+		
 		SAXReader saxReader = new SAXReader();
 		Document document = saxReader.read(inputStream);
 
@@ -85,23 +85,44 @@ public class MessageUtil {
 			result.put(e.getName(), e.getText());
 		}
 
+		//debug
+		System.out.println(result);
+		
 		inputStream.close();
 
 		return result;
 	}
 
+	/**
+	 * parse text response message
+	 * 
+	 * @param textResponseMessage
+	 * @return
+	 */
 	public static String textResponseMsgToXML(
 			TextResponseMessage textResponseMessage) {
 		xstream.alias("xml", textResponseMessage.getClass());
 		return xstream.toXML(textResponseMessage);
 	}
 
+	/**
+	 * parse music response message
+	 * 
+	 * @param musicResponseMessage
+	 * @return
+	 */
 	public static String musicResponseMsgToXML(
 			MusicResponseMessage musicResponseMessage) {
 		xstream.alias("xml", musicResponseMessage.getClass());
 		return xstream.toXML(musicResponseMessage);
 	}
 
+	/**
+	 * prase response message
+	 * 
+	 * @param newsResponseMessage
+	 * @return
+	 */
 	public static String newsResponseMsgToXML(
 			NewsResponseMessage newsResponseMessage) {
 		xstream.alias("xml", newsResponseMessage.getClass());
@@ -109,7 +130,6 @@ public class MessageUtil {
 		return xstream.toXML(newsResponseMessage);
 	}
 
-	
 	/**
 	 * what hell is this?
 	 */
