@@ -6,7 +6,6 @@ public class BaseResponseMessage {
 	private String MsgType;
 
 	private long CreateTime;
-	private int FuncFlag; // 0x1 for marking new message
 
 	public String getToUserName() {
 		return ToUserName;
@@ -40,11 +39,11 @@ public class BaseResponseMessage {
 		CreateTime = createTime;
 	}
 
-	public int getFuncFlag() {
-		return FuncFlag;
-	}
-
-	public void setFuncFlag(int funcFlag) {
-		FuncFlag = funcFlag;
+	/**
+	 * for override
+	 * @return
+	 */
+	public String toXML(){
+		return null;
 	}
 }

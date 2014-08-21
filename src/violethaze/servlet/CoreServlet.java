@@ -62,6 +62,10 @@ public class CoreServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		String responseMsg = CoreService.processRequest(request);
+
+		// debug
+		System.out.println(responseMsg);
+		
 		PrintWriter out = response.getWriter();
 		out.print(responseMsg);
 		out.close();

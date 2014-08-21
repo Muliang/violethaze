@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 /**
- * utility class
+ * signature utility class
  * @author violethaze
  *
  */
